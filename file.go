@@ -24,6 +24,19 @@ func Read(path string) (content string, err error) {
 	return
 }
 
+// WriteByte write byte to file
+func WriteByte(path string, content []byte) (len int, err error) {
+	file, err := os.Create(path)
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	len, err = file.Write(content)
+
+	return
+}
+
 // Write write to file
 func Write(path string, content ...interface{}) (len int, err error) {
 	file, err := os.Create(path)
@@ -98,6 +111,20 @@ func Appendln(path string, content ...interface{}) (len int, err error) {
 	defer file.Close()
 
 	len, err = fmt.Fprintln(file, content...)
+
+	return
+}
+
+// WriteByteTemp write byte to temp file
+func WriteByteTemp(pattern string, content []byte) (path string, len int, err error) {
+	file, err := ioutil.TempFile("", pattern)
+	if err != nil {
+		return
+	}
+	path = file.Name()
+	defer file.Close()
+
+	len, err = file.Write(content)
 
 	return
 }
