@@ -78,7 +78,7 @@ func Writeln(path string, content ...interface{}) (len int, err error) {
 
 // Append append to file
 func Append(path string, content ...interface{}) (len int, err error) {
-	file, err := os.OpenFile(path, os.O_APPEND, 0666)
+	file, err := os.OpenFile(path, os.O_APPEND, 0600)
 	if err != nil {
 		return
 	}
@@ -91,7 +91,7 @@ func Append(path string, content ...interface{}) (len int, err error) {
 
 // Appendf append to file with format
 func Appendf(path string, format string, content ...interface{}) (len int, err error) {
-	file, err := os.OpenFile(path, os.O_APPEND, 0666)
+	file, err := os.OpenFile(path, os.O_APPEND, 0600)
 	if err != nil {
 		return
 	}
@@ -104,7 +104,7 @@ func Appendf(path string, format string, content ...interface{}) (len int, err e
 
 // Appendln append to file with newline
 func Appendln(path string, content ...interface{}) (len int, err error) {
-	file, err := os.OpenFile(path, os.O_APPEND, 0666)
+	file, err := os.OpenFile(path, os.O_APPEND, 0600)
 	if err != nil {
 		return
 	}
