@@ -38,7 +38,7 @@ func WriteByteTemp(pattern string, content []byte) (path string, len int, err er
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
@@ -80,7 +80,7 @@ func WriteTemp(pattern string, content ...interface{}) (path string, len int, er
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -123,7 +123,7 @@ func WritefTemp(pattern string, format string, content ...interface{}) (path str
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -165,7 +165,7 @@ func WritelnTemp(pattern string, content ...interface{}) (path string, len int, 
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,

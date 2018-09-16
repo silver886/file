@@ -291,6 +291,14 @@ func (buffer *Buffer) Commit() (len int, err error) {
 
 // NewBuffer create a buffer
 func NewBuffer(path string) (buffer *Buffer) {
+	if intLog {
+		intLogger.WithFields(
+			logger.DebugInfo(1, logrus.Fields{
+				"file_path": path,
+			}),
+		).Debugln("New buffer . . .")
+	}
+
 	buffer = new(Buffer)
 	buffer.path = path
 

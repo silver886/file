@@ -30,7 +30,7 @@ func Exist(path string) (result bool) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path": path,
+				"file_path": path,
 			}),
 		).Debugln("Check path existence . . .")
 	}
@@ -44,8 +44,8 @@ func Exist(path string) (result bool) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":   path,
-				"result": result,
+				"file_path": path,
+				"result":    result,
 			}),
 		).Debugln("Check path existence")
 	}
@@ -58,7 +58,7 @@ func Read(path string) (content string, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path": path,
+				"file_path": path,
 			}),
 		).Debugln("Read from file . . .")
 	}
@@ -69,7 +69,7 @@ func Read(path string) (content string, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": contentByte,
 			}),
 		).Debugln("Read from file")

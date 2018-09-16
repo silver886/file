@@ -13,7 +13,7 @@ func WriteByte(path string, content []byte) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": content,
 			}),
 		).Debugln("WriteByte to file . . .")
@@ -37,7 +37,7 @@ func WriteByte(path string, content []byte) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
@@ -53,7 +53,7 @@ func Write(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": content,
 			}),
 		).Debugln("Write to file . . .")
@@ -78,7 +78,7 @@ func Write(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -94,7 +94,7 @@ func Writef(path string, format string, content ...interface{}) (len int, err er
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"format":      format,
 				"raw_content": content,
 			}),
@@ -120,7 +120,7 @@ func Writef(path string, format string, content ...interface{}) (len int, err er
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -136,7 +136,7 @@ func Writeln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": content,
 			}),
 		).Debugln("Writeln to file . . .")
@@ -161,7 +161,7 @@ func Writeln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,

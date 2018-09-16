@@ -13,7 +13,7 @@ func Append(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": content,
 			}),
 		).Debugln("Append to file . . .")
@@ -38,7 +38,7 @@ func Append(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -55,7 +55,7 @@ func Appendf(path string, format string, content ...interface{}) (len int, err e
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"format":      format,
 				"raw_content": content,
 			}),
@@ -81,7 +81,7 @@ func Appendf(path string, format string, content ...interface{}) (len int, err e
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
@@ -97,7 +97,7 @@ func Appendln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":        path,
+				"file_path":   path,
 				"raw_content": content,
 			}),
 		).Debugln("Appendln to file . . .")
@@ -122,7 +122,7 @@ func Appendln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
 		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
-				"path":           path,
+				"file_path":      path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
