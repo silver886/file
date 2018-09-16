@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// Buffer can store content to a builder and write to path at once
+// Buffer can store contents to a buffer and write them to path at one time
 type Buffer struct {
 	path   string
 	buffer strings.Builder
