@@ -39,18 +39,21 @@ func (buffer *Buffer) String() (content string) {
 	return
 }
 
-func (buffer *Buffer) Write(p []byte) (len int, err error) {
-	len, err = buffer.buffer.Write(p)
+// Write appends the contents to buffer
+func (buffer *Buffer) Write(content []byte) (len int, err error) {
+	len, err = buffer.buffer.Write(content)
 	return
 }
 
-func (buffer *Buffer) WriteByte(c byte) (err error) {
-	err = buffer.buffer.WriteByte(c)
+// WriteByte appends the contents to buffer
+func (buffer *Buffer) WriteByte(content byte) (err error) {
+	err = buffer.buffer.WriteByte(content)
 	return
 }
 
-func (buffer *Buffer) WriteRune(r rune) (len int, err error) {
-	len, err = buffer.buffer.WriteRune(r)
+// WriteRune appends the UTF-8 encoding of Unicode code content to buffer
+func (buffer *Buffer) WriteRune(content rune) (len int, err error) {
+	len, err = buffer.buffer.WriteRune(content)
 	return
 }
 
