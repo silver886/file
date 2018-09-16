@@ -19,13 +19,11 @@ func (buffer *Buffer) Reset() {
 	buffer.buffer.Reset()
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer": buffer,
-			})),
-			logrus.DebugLevel,
-			"Reset buffer",
-		)
+			}),
+		).Debugln("Reset buffer")
 	}
 
 	return
@@ -36,14 +34,12 @@ func (buffer *Buffer) Len() (len int) {
 	len = buffer.buffer.Len()
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer": buffer,
 				"length": len,
-			})),
-			logrus.DebugLevel,
-			"Buffer length",
-		)
+			}),
+		).Debugln("Buffer length")
 	}
 
 	return
@@ -54,14 +50,12 @@ func (buffer *Buffer) String() (content string) {
 	content = buffer.buffer.String()
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer": buffer,
 				"string": content,
-			})),
-			logrus.DebugLevel,
-			"Buffer content",
-		)
+			}),
+		).Debugln("Buffer content")
 	}
 
 	return
@@ -70,29 +64,25 @@ func (buffer *Buffer) String() (content string) {
 // Write appends the contents to buffer
 func (buffer *Buffer) Write(content []byte) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Write to buffer . . .",
-		)
+			}),
+		).Debugln("Write to buffer . . .")
 	}
 
 	len, err = buffer.buffer.Write(content)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Write to buffer",
-		)
+			}),
+		).Debugln("Write to buffer")
 	}
 	return
 }
@@ -100,28 +90,24 @@ func (buffer *Buffer) Write(content []byte) (len int, err error) {
 // WriteByte appends the contents to buffer
 func (buffer *Buffer) WriteByte(content byte) (err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteByte to buffer . . .",
-		)
+			}),
+		).Debugln("WriteByte to buffer . . .")
 	}
 
 	err = buffer.buffer.WriteByte(content)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        content,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteByte to buffer",
-		)
+			}),
+		).Debugln("WriteByte to buffer")
 	}
 
 	return
@@ -130,29 +116,25 @@ func (buffer *Buffer) WriteByte(content byte) (err error) {
 // WriteRune appends the UTF-8 encoding of Unicode code content to buffer
 func (buffer *Buffer) WriteRune(content rune) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteRune to buffer . . .",
-		)
+			}),
+		).Debugln("WriteRune to buffer . . .")
 	}
 
 	len, err = buffer.buffer.WriteRune(content)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteRune to buffer",
-		)
+			}),
+		).Debugln("WriteRune to buffer")
 	}
 
 	return
@@ -161,30 +143,26 @@ func (buffer *Buffer) WriteRune(content rune) (len int, err error) {
 // WriteString appends the contents to buffer
 func (buffer *Buffer) WriteString(content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteString to buffer . . .",
-		)
+			}),
+		).Debugln("WriteString to buffer . . .")
 	}
 
 	contentStr := fmt.Sprint(content...)
 	len, err = buffer.buffer.WriteString(contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteString to buffer",
-		)
+			}),
+		).Debugln("WriteString to buffer")
 	}
 
 	return
@@ -193,31 +171,27 @@ func (buffer *Buffer) WriteString(content ...interface{}) (len int, err error) {
 // WriteStringf appends the contents to buffer with format
 func (buffer *Buffer) WriteStringf(format string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"format":      format,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteStringf to buffer . . .",
-		)
+			}),
+		).Debugln("WriteStringf to buffer . . .")
 	}
 
 	contentStr := fmt.Sprintf(format, content...)
 	len, err = buffer.buffer.WriteString(contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteStringf to buffer",
-		)
+			}),
+		).Debugln("WriteStringf to buffer")
 	}
 
 	return
@@ -226,30 +200,26 @@ func (buffer *Buffer) WriteStringf(format string, content ...interface{}) (len i
 // WriteStringln appends the contents to buffer with newline
 func (buffer *Buffer) WriteStringln(content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteStringln to buffer . . .",
-		)
+			}),
+		).Debugln("WriteStringln to buffer . . .")
 	}
 
 	contentStr := fmt.Sprintln(content...)
 	len, err = buffer.buffer.WriteString(contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":         buffer,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteStringln to buffer",
-		)
+			}),
+		).Debugln("WriteStringln to buffer")
 	}
 
 	return
@@ -258,14 +228,12 @@ func (buffer *Buffer) WriteStringln(content ...interface{}) (len int, err error)
 // Set set buffer content
 func (buffer *Buffer) Set(content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Set buffer . . .",
-		)
+			}),
+		).Debugln("Set buffer . . .")
 	}
 
 	buffer.Reset()
@@ -276,15 +244,13 @@ func (buffer *Buffer) Set(content ...interface{}) (len int, err error) {
 // Setf set buffer content with format
 func (buffer *Buffer) Setf(format string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"format":      format,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Setf buffer . . .",
-		)
+			}),
+		).Debugln("Setf buffer . . .")
 	}
 
 	buffer.Reset()
@@ -295,14 +261,12 @@ func (buffer *Buffer) Setf(format string, content ...interface{}) (len int, err 
 // Setln set buffer content with newline
 func (buffer *Buffer) Setln(content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer":      buffer,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Setln buffer . . .",
-		)
+			}),
+		).Debugln("Setln buffer . . .")
 	}
 
 	buffer.Reset()
@@ -315,13 +279,11 @@ func (buffer *Buffer) Commit() (len int, err error) {
 	len, err = Write(buffer.path, buffer.buffer.String())
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer": buffer,
-			})),
-			logrus.DebugLevel,
-			"Commit buffer",
-		)
+			}),
+		).Debugln("Commit buffer")
 	}
 
 	return
@@ -333,13 +295,11 @@ func NewBuffer(path string) (buffer *Buffer) {
 	buffer.path = path
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"buffer": buffer,
-			})),
-			logrus.DebugLevel,
-			"New buffer",
-		)
+			}),
+		).Debugln("New buffer")
 	}
 
 	return

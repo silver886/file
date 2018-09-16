@@ -11,26 +11,22 @@ import (
 // WriteByteTemp write byte to temp file
 func WriteByteTemp(pattern string, content []byte) (path string, len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"pattern":     pattern,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteByteTemp to file . . .",
-		)
+			}),
+		).Debugln("WriteByteTemp to file . . .")
 	}
 
 	file, err := ioutil.TempFile("", pattern)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -40,16 +36,14 @@ func WriteByteTemp(pattern string, content []byte) (path string, len int, err er
 	len, err = file.Write(content)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteByteTemp to file",
-		)
+			}),
+		).Debugln("WriteByteTemp to file")
 	}
 
 	return
@@ -58,26 +52,22 @@ func WriteByteTemp(pattern string, content []byte) (path string, len int, err er
 // WriteTemp write to temp file
 func WriteTemp(pattern string, content ...interface{}) (path string, len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"pattern":     pattern,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteTemp to file . . .",
-		)
+			}),
+		).Debugln("WriteTemp to file . . .")
 	}
 
 	file, err := ioutil.TempFile("", pattern)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -88,16 +78,14 @@ func WriteTemp(pattern string, content ...interface{}) (path string, len int, er
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteTemp to file",
-		)
+			}),
+		).Debugln("WriteTemp to file")
 	}
 
 	return
@@ -106,27 +94,23 @@ func WriteTemp(pattern string, content ...interface{}) (path string, len int, er
 // WritefTemp write to temp file with format
 func WritefTemp(pattern string, format string, content ...interface{}) (path string, len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"pattern":     pattern,
 				"format":      format,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WritefTemp to file . . .",
-		)
+			}),
+		).Debugln("WritefTemp to file . . .")
 	}
 
 	file, err := ioutil.TempFile("", pattern)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -137,16 +121,14 @@ func WritefTemp(pattern string, format string, content ...interface{}) (path str
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WritefTemp to file",
-		)
+			}),
+		).Debugln("WritefTemp to file")
 	}
 
 	return
@@ -155,26 +137,22 @@ func WritefTemp(pattern string, format string, content ...interface{}) (path str
 // WritelnTemp write to temp file with newline
 func WritelnTemp(pattern string, content ...interface{}) (path string, len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"pattern":     pattern,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WritelnTemp to file . . .",
-		)
+			}),
+		).Debugln("WritelnTemp to file . . .")
 	}
 
 	file, err := ioutil.TempFile("", pattern)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -185,16 +163,14 @@ func WritelnTemp(pattern string, content ...interface{}) (path string, len int, 
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WritelnTemp to file",
-		)
+			}),
+		).Debugln("WritelnTemp to file")
 	}
 
 	return

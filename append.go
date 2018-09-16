@@ -11,26 +11,22 @@ import (
 // Append appends the contents to file
 func Append(path string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Append to file . . .",
-		)
+			}),
+		).Debugln("Append to file . . .")
 	}
 
 	file, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0644|os.ModeAppend)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot open file",
-			)
+				}),
+			).Errorln("Cannot open file")
 		}
 		return
 	}
@@ -40,16 +36,15 @@ func Append(path string, content ...interface{}) (len int, err error) {
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Append to file",
-		)
+			}),
+		).Debugln("Append to file")
+
 	}
 
 	return
@@ -58,27 +53,23 @@ func Append(path string, content ...interface{}) (len int, err error) {
 // Appendf appends the contents to file with format
 func Appendf(path string, format string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"format":      format,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Appendf to file . . .",
-		)
+			}),
+		).Debugln("Appendf to file . . .")
 	}
 
 	file, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0644|os.ModeAppend)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot open file",
-			)
+				}),
+			).Errorln("Cannot open file")
 		}
 		return
 	}
@@ -88,16 +79,14 @@ func Appendf(path string, format string, content ...interface{}) (len int, err e
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Appendf to file",
-		)
+			}),
+		).Debugln("Appendf to file")
 	}
 
 	return
@@ -106,26 +95,22 @@ func Appendf(path string, format string, content ...interface{}) (len int, err e
 // Appendln appends the contents to file with newline
 func Appendln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Appendln to file . . .",
-		)
+			}),
+		).Debugln("Appendln to file . . .")
 	}
 
 	file, err := os.OpenFile(path, os.O_APPEND|os.O_WRONLY, 0644|os.ModeAppend)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot open file",
-			)
+				}),
+			).Errorln("Cannot open file")
 		}
 		return
 	}
@@ -135,16 +120,14 @@ func Appendln(path string, content ...interface{}) (len int, err error) {
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Appendln to file",
-		)
+			}),
+		).Debugln("Appendln to file")
 	}
 
 	return

@@ -11,26 +11,22 @@ import (
 // WriteByte write byte to file
 func WriteByte(path string, content []byte) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"WriteByte to file . . .",
-		)
+			}),
+		).Debugln("WriteByte to file . . .")
 	}
 
 	file, err := os.Create(path)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -39,16 +35,14 @@ func WriteByte(path string, content []byte) (len int, err error) {
 	len, err = file.Write(content)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        content,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"WriteByte to file",
-		)
+			}),
+		).Debugln("WriteByte to file")
 	}
 
 	return
@@ -57,26 +51,22 @@ func WriteByte(path string, content []byte) (len int, err error) {
 // Write write to file
 func Write(path string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Write to file . . .",
-		)
+			}),
+		).Debugln("Write to file . . .")
 	}
 
 	file, err := os.Create(path)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -86,16 +76,14 @@ func Write(path string, content ...interface{}) (len int, err error) {
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Write to file",
-		)
+			}),
+		).Debugln("Write to file")
 	}
 
 	return
@@ -104,27 +92,23 @@ func Write(path string, content ...interface{}) (len int, err error) {
 // Writef write to file with format
 func Writef(path string, format string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"format":      format,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Writef to file . . .",
-		)
+			}),
+		).Debugln("Writef to file . . .")
 	}
 
 	file, err := os.Create(path)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -134,16 +118,14 @@ func Writef(path string, format string, content ...interface{}) (len int, err er
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Writef to file",
-		)
+			}),
+		).Debugln("Writef to file")
 	}
 
 	return
@@ -152,26 +134,22 @@ func Writef(path string, format string, content ...interface{}) (len int, err er
 // Writeln write to file with newline
 func Writeln(path string, content ...interface{}) (len int, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": content,
-			})),
-			logrus.DebugLevel,
-			"Writeln to file . . .",
-		)
+			}),
+		).Debugln("Writeln to file . . .")
 	}
 
 	file, err := os.Create(path)
 	if err != nil {
 		if intLog {
-			logger.LevelLog(intLogger.WithFields(
+			intLogger.WithFields(
 				logger.DebugInfo(1, logrus.Fields{
 					"internal_error": err,
-				})),
-				logrus.ErrorLevel,
-				"Cannot create file",
-			)
+				}),
+			).Errorln("Cannot create file")
 		}
 		return
 	}
@@ -181,16 +159,14 @@ func Writeln(path string, content ...interface{}) (len int, err error) {
 	len, err = fmt.Fprint(file, contentStr)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":           path,
 				"content":        contentStr,
 				"length":         len,
 				"internal_error": err,
-			})),
-			logrus.DebugLevel,
-			"Writeln to file",
-		)
+			}),
+		).Debugln("Writeln to file")
 	}
 
 	return

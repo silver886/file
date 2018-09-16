@@ -28,13 +28,11 @@ func ResetLogger() {
 // Exist detect the existence of a path
 func Exist(path string) (result bool) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path": path,
-			})),
-			logrus.DebugLevel,
-			"Check path existence . . .",
-		)
+			}),
+		).Debugln("Check path existence . . .")
 	}
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -44,14 +42,12 @@ func Exist(path string) (result bool) {
 	}
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":   path,
 				"result": result,
-			})),
-			logrus.DebugLevel,
-			"Check path existence",
-		)
+			}),
+		).Debugln("Check path existence")
 	}
 
 	return
@@ -60,27 +56,23 @@ func Exist(path string) (result bool) {
 // Read read a file
 func Read(path string) (content string, err error) {
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path": path,
-			})),
-			logrus.DebugLevel,
-			"Read from file . . .",
-		)
+			}),
+		).Debugln("Read from file . . .")
 	}
 
 	contentByte, err := ioutil.ReadFile(path)
 	content = string(contentByte)
 
 	if intLog {
-		logger.LevelLog(intLogger.WithFields(
+		intLogger.WithFields(
 			logger.DebugInfo(1, logrus.Fields{
 				"path":        path,
 				"raw_content": contentByte,
-			})),
-			logrus.DebugLevel,
-			"Read from file",
-		)
+			}),
+		).Debugln("Read from file")
 	}
 
 	return
