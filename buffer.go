@@ -11,13 +11,6 @@ type Buffer struct {
 	buffer strings.Builder
 }
 
-// NewBuffer create a buffer
-func NewBuffer(path string) (buffer *Buffer) {
-	buffer = new(Buffer)
-	buffer.path = path
-	return
-}
-
 // Reset buffer content
 func (buffer *Buffer) Reset() {
 	buffer.buffer.Reset()
@@ -96,5 +89,12 @@ func (buffer *Buffer) Setln(content ...interface{}) (len int, err error) {
 // Commit buffer content to file
 func (buffer *Buffer) Commit() (len int, err error) {
 	len, err = Write(buffer.path, buffer.buffer.String())
+	return
+}
+
+// NewBuffer create a buffer
+func NewBuffer(path string) (buffer *Buffer) {
+	buffer = new(Buffer)
+	buffer.path = path
 	return
 }
