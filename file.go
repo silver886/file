@@ -155,9 +155,9 @@ func Copy(dest string, src ...string) error {
 		}
 	}
 
-	if errorMsg.Len() == 0 {
-		return nil
-	} else {
+	if errorMsg.Len() != 0 {
 		return errors.New(errorMsg.String())
 	}
+
+	return nil
 }
