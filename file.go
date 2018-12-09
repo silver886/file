@@ -13,22 +13,17 @@ import (
 )
 
 // Exist detect the existence of a path
-func Exist(path string) (result bool) {
+func Exist(path string) bool {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
-		result = false
-	} else {
-		result = true
+		return false
 	}
-
-	return
+	return true
 }
 
 // Read read a file
-func Read(path string) (content string, err error) {
+func Read(path string) (string, error) {
 	contentByte, err := ioutil.ReadFile(path)
-	content = string(contentByte)
-
-	return
+	return string(contentByte), err
 }
 
 // Copy copy files
@@ -37,7 +32,6 @@ func Copy(dest string, src ...string) error {
 	var errorMsg strings.Builder
 
 	for _, val := range src {
-
 		var patternBuilder strings.Builder
 
 		for _, val := range strings.Split(val, "/") {

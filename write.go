@@ -6,56 +6,45 @@ import (
 )
 
 // WriteByte write byte to file
-func WriteByte(path string, content []byte) (len int, err error) {
+func WriteByte(path string, content []byte) (int, error) {
 	file, err := os.Create(path)
 	if err != nil {
-		return
+		return 0, err
 	}
 	defer file.Close()
 
-	len, err = file.Write(content)
-
-	return
+	return file.Write(content)
 }
 
 // Write write to file
-func Write(path string, content ...interface{}) (len int, err error) {
+func Write(path string, content ...interface{}) (int, error) {
 	file, err := os.Create(path)
 	if err != nil {
-		return
+		return 0, err
 	}
 	defer file.Close()
 
-	contentStr := fmt.Sprint(content...)
-	len, err = fmt.Fprint(file, contentStr)
-
-	return
+	return fmt.Fprint(file, content...)
 }
 
 // Writef write to file with format
-func Writef(path string, format string, content ...interface{}) (len int, err error) {
+func Writef(path string, format string, content ...interface{}) (int, error) {
 	file, err := os.Create(path)
 	if err != nil {
-		return
+		return 0, err
 	}
 	defer file.Close()
 
-	contentStr := fmt.Sprintf(format, content...)
-	len, err = fmt.Fprint(file, contentStr)
-
-	return
+	return fmt.Fprintf(file, format, content...)
 }
 
 // Writeln write to file with newline
-func Writeln(path string, content ...interface{}) (len int, err error) {
+func Writeln(path string, content ...interface{}) (int, error) {
 	file, err := os.Create(path)
 	if err != nil {
-		return
+		return 0, err
 	}
 	defer file.Close()
 
-	contentStr := fmt.Sprintln(content...)
-	len, err = fmt.Fprint(file, contentStr)
-
-	return
+	return fmt.Fprintln(file, content...)
 }
